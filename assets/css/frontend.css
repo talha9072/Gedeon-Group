@@ -1,0 +1,1446 @@
+/*
+ * Gedeon Group — shared styles (frontend + editor).
+ *
+ * Tokens (colours, font family) live in theme.json. Geometry and type sizes come from the
+ * approved 1920px Figma frames ("03 - Desktop"); the 1296px content column sits in the
+ * middle of the frame (312px each side at 1920). There are no tablet or mobile frames, so
+ * below desktop the same components reflow:
+ *   desktop ≥ 1200px · tablet 768–1199px · mobile < 768px
+ *
+ * Naming: BEM with a `gg-` prefix. This file holds the shared components (header, footer,
+ * section headings, cards, heroes, CTAs, FAQ, status pages). Page-specific sections live in
+ * home.css, pages.css and news.css.
+ */
+
+:root {
+	--gg-accent: #277ce0;
+	--gg-button: #159de8;
+	--gg-page: #020812;
+	--gg-ink: #07111f;
+	--gg-card: rgba(12, 21, 30, 0.75);
+	--gg-card-solid: #0c151e;
+	--gg-white: #fff;
+	--gg-soft: #d1d9e3;
+	--gg-muted: #a7afba;
+	--gg-container: min(1296px, 100% - 48px);
+	--gg-header-height: 96px;
+	--gg-transition: 0.25s ease;
+	--gg-hero-shadow: 0 2px 3px rgba(0, 0, 0, 0.8), 0 5px 18px rgba(0, 0, 0, 0.48);
+	--gg-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'%3E%3Cpath d='M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z'/%3E%3C/svg%3E");
+	--gg-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/%3E%3C/svg%3E");
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: var(--gg-header-height);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+	}
+}
+
+body {
+	background: var(--gg-page);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: clip;
+}
+
+/* Sections sit flush against each other; spacing is owned by each section. */
+.wp-site-blocks > * + *,
+.gg-main > * + *,
+.gg-content > * + * {
+	margin-block-start: 0;
+}
+
+.wp-site-blocks {
+	padding: 0;
+}
+
+:where(.gg-main) img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Every group inside a section manages its own spacing. */
+:where(.gg-section, .gg-hero, .gg-closing, .gg-mid-cta, .gg-footer, .gg-gateway) :where(.wp-block-group, p, h1, h2, h3, ul, ol, figure, .wp-block-buttons) {
+	margin-block: 0;
+}
+
+/* Line breaks that keep the Figma line endings on wide screens only. */
+@media (max-width: 1439px) {
+	.gg-br {
+		display: none;
+	}
+}
+
+.gg-container {
+	width: var(--gg-container);
+	margin-inline: auto;
+}
+
+.gg-section {
+	position: relative;
+	padding: 64px 0;
+	background: var(--gg-page);
+}
+
+:where(a, .wp-element-button, summary, button, input, select, textarea):focus-visible {
+	outline: 2px solid var(--gg-accent);
+	outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Shared text: accent rule, eyebrow, section title, intro
+ * ------------------------------------------------------------------------ */
+
+.gg-accent {
+	width: 72px;
+	height: 2px;
+	margin-inline: auto;
+	background: var(--gg-accent);
+}
+
+.gg-heading {
+	text-align: center;
+}
+
+.gg-heading .gg-accent {
+	margin-bottom: 38px;
+}
+
+.gg-eyebrow {
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 18px;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	color: var(--gg-accent);
+}
+
+.gg-title {
+	font-size: 34px;
+	font-weight: 600;
+	line-height: 42px;
+	letter-spacing: 0;
+	color: var(--gg-white);
+}
+
+.gg-heading .gg-title {
+	margin-top: 24px;
+}
+
+.gg-intro {
+	max-width: 836px;
+	margin-inline: auto;
+	font-size: 15px;
+	line-height: 26px;
+	letter-spacing: 0;
+	color: var(--gg-white);
+}
+
+.gg-heading .gg-intro {
+	margin-top: 20px;
+}
+
+.gg-heading + * {
+	margin-top: 36px;
+}
+
+/* Centred listing heading (About team / office, Careers): divider below the title. */
+.gg-heading--listing {
+	padding-top: 64px;
+}
+
+.gg-heading--listing .gg-title {
+	margin-top: 22px;
+}
+
+.gg-heading__divider {
+	width: 64px;
+	height: 2px;
+	margin: 18px auto 0;
+	background: var(--gg-accent);
+}
+
+.gg-heading--listing + * {
+	margin-top: 20px;
+}
+
+/* Full-width summary bar under a card grid. */
+.gg-bar {
+	margin-top: 30px;
+	padding: 20px 24px;
+	border-radius: 6px;
+	background: rgba(12, 21, 30, 0.78);
+	font-size: 11px;
+	line-height: 16.5px;
+	letter-spacing: 0.5px;
+	text-align: center;
+	color: var(--gg-accent);
+}
+
+/* ---------------------------------------------------------------------------
+ * Buttons
+ * Primary (Figma "Explore Our Capabilities"): blue fill, ink label.
+ * Secondary: page navy with blue outline. Alt (mid-page CTA, forms): lighter blue, white label.
+ * ------------------------------------------------------------------------ */
+
+.wp-element-button,
+.wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 52px;
+	padding: 0 24px;
+	border: 1px solid var(--gg-accent);
+	border-radius: 6px;
+	background: var(--gg-accent);
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 18px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--gg-ink);
+	transition: background-color var(--gg-transition), border-color var(--gg-transition), color var(--gg-transition);
+}
+
+.wp-element-button:hover,
+.wp-block-button__link:hover,
+.wp-element-button:focus-visible,
+.wp-block-button__link:focus-visible {
+	border-color: var(--gg-white);
+	background: var(--gg-white);
+	color: var(--gg-ink);
+}
+
+.gg-button--secondary .wp-block-button__link {
+	background: var(--gg-page);
+	color: var(--gg-white);
+}
+
+.gg-button--secondary .wp-block-button__link:hover,
+.gg-button--secondary .wp-block-button__link:focus-visible {
+	border-color: var(--gg-accent);
+	background: var(--gg-accent);
+	color: var(--gg-ink);
+}
+
+.gg-button--alt .wp-block-button__link,
+.gg-button--alt.wp-element-button {
+	padding: 0 32px;
+	border-color: var(--gg-button);
+	background: var(--gg-button);
+	color: var(--gg-white);
+}
+
+.gg-button--alt .wp-block-button__link:hover,
+.gg-button--alt .wp-block-button__link:focus-visible,
+.gg-button--alt.wp-element-button:hover,
+.gg-button--alt.wp-element-button:focus-visible {
+	border-color: var(--gg-white);
+	background: var(--gg-white);
+	color: var(--gg-ink);
+}
+
+.gg-button--return .wp-block-button__link {
+	padding: 0 32px;
+	border-color: var(--gg-button);
+	background: var(--gg-button);
+}
+
+/* "Read article →" style text links. */
+.gg-link-arrow,
+.gg-link-arrow a {
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 18px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--gg-accent);
+}
+
+.gg-link-arrow a::after,
+.gg-link-arrow:is(a)::after {
+	content: "";
+	display: inline-block;
+	width: 8px;
+	height: 9px;
+	margin-left: 16px;
+	background: currentColor;
+	-webkit-mask: var(--gg-arrow) center / contain no-repeat;
+	mask: var(--gg-arrow) center / contain no-repeat;
+	transition: transform var(--gg-transition);
+}
+
+.gg-link-arrow a:hover::after,
+.gg-link-arrow:is(a):hover::after {
+	transform: translateX(4px);
+}
+
+/* ---------------------------------------------------------------------------
+ * Header — Figma "Global Header / Font Awesome / Desktop": 96px, translucent navy,
+ * logo 160px at 64px from the edge, navigation 80px after it, language label right.
+ * ------------------------------------------------------------------------ */
+
+.wp-site-blocks > header:first-child {
+	position: fixed;
+	top: var(--wp-admin--admin-bar--height, 0px);
+	right: 0;
+	left: 0;
+	z-index: 100;
+}
+
+.gg-header.gg-header {
+	position: relative;
+	isolation: isolate;
+	gap: 0;
+	min-height: var(--gg-header-height);
+	margin: 0;
+	/* Same 1296px column as every section and the footer, so all edges line up. */
+	padding: 0 max(24px, calc((100% - 1296px) / 2));
+}
+
+/*
+ * Blur lives on a pseudo-element: backdrop-filter on the header itself would make it the
+ * containing block for the fixed mobile menu overlay and clip it to the header height.
+ */
+.gg-header.gg-header::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	background: rgba(2, 8, 18, 0.42);
+	-webkit-backdrop-filter: blur(3px);
+	backdrop-filter: blur(3px);
+}
+
+.gg-header .gg-header__logo {
+	flex-shrink: 0;
+	margin: 5px 0 0;
+}
+
+.gg-header .gg-header__logo a,
+.gg-header .gg-header__logo img {
+	display: block;
+}
+
+.gg-header .gg-header__logo img {
+	width: 160px;
+	height: auto;
+}
+
+.gg-header nav.gg-header__nav {
+	flex: 1 1 auto;
+	margin: 0 0 0 48px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	color: var(--gg-white);
+}
+
+.gg-header .gg-header__nav .wp-block-navigation__container {
+	gap: 42px;
+}
+
+.gg-header .gg-header__nav .wp-block-navigation-item__content {
+	position: relative;
+	padding-block: 8px;
+	color: var(--gg-white);
+	transition: color var(--gg-transition);
+}
+
+/* Blue underline that draws in from the left on hover and stays on the current page. */
+.gg-header .gg-header__nav .wp-block-navigation-item__content::after {
+	content: "";
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 2px;
+	background: var(--gg-accent);
+	transform: scaleX(0);
+	transform-origin: left center;
+	transition: transform var(--gg-transition);
+}
+
+.gg-header .gg-header__nav .wp-block-navigation-item__content:hover::after,
+.gg-header .gg-header__nav .wp-block-navigation-item__content:focus-visible::after,
+.gg-header .gg-header__nav .current-menu-item > .wp-block-navigation-item__content::after,
+.gg-header .gg-header__nav [aria-current="page"]::after {
+	transform: scaleX(1);
+}
+
+/* Language label behind the blue divider: 1px × 44px rule, "EN" 23px after it, chevron. */
+.gg-header .gg-header__lang {
+	position: relative;
+	flex-shrink: 0;
+	margin-left: auto !important;
+	display: flex;
+	align-items: center;
+	height: 44px;
+	margin: 0;
+	padding-left: 24px;
+	border-left: 1px solid var(--gg-accent);
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	color: var(--gg-white);
+}
+
+.gg-header .gg-header__lang span {
+	display: inline-flex;
+	align-items: center;
+	gap: 9px;
+	width: 72px;
+	margin-top: -8px;
+}
+
+.gg-header .gg-header__lang span::after {
+	content: "";
+	width: 9px;
+	height: 9px;
+	margin-top: 5px;
+	background: currentColor;
+	-webkit-mask: var(--gg-chevron) center / contain no-repeat;
+	mask: var(--gg-chevron) center / contain no-repeat;
+}
+
+/* Mobile overlay menu: close button lines up with the hamburger. */
+.gg-header .wp-block-navigation__responsive-container.is-menu-open {
+	padding: calc((var(--gg-header-height) - 24px) / 2) 24px 40px;
+}
+
+.gg-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content {
+	padding-top: calc(var(--gg-header-height) - 12px);
+}
+
+.gg-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+	gap: 24px;
+	font-size: 16px;
+}
+
+/* Hamburger: three 24px bars, 18px tall. */
+.gg-header .wp-block-navigation__responsive-container-open {
+	width: 24px;
+	height: 18px;
+	padding: 0;
+	background:
+		linear-gradient(#f5f5f5, #f5f5f5) 0 0 / 24px 2px no-repeat,
+		linear-gradient(#f5f5f5, #f5f5f5) 0 8px / 24px 2px no-repeat,
+		linear-gradient(#f5f5f5, #f5f5f5) 0 16px / 24px 2px no-repeat;
+}
+
+.gg-header .wp-block-navigation__responsive-container-open svg {
+	display: none;
+}
+
+/* Smaller desktops: the gaps shrink so the seven links stay on one row. */
+@media (min-width: 1280px) and (max-width: 1439px) {
+	.gg-header .gg-header__nav .wp-block-navigation__container {
+		gap: clamp(24px, calc((100vw - 1280px) / 8 + 24px), 42px);
+	}
+}
+
+/* Below 1280px the navigation moves into the overlay menu. */
+@media (max-width: 1279px) {
+	.gg-header nav.gg-header__nav {
+		flex: 0 0 auto;
+		order: 3;
+		margin-left: 24px;
+	}
+
+	.gg-header .gg-header__lang {
+		margin-left: auto;
+	}
+
+	.gg-header .wp-block-navigation__responsive-container-open:not(.always-shown) {
+		display: flex;
+	}
+
+	.gg-header .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+		display: none;
+	}
+
+	.gg-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content,
+	.gg-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container {
+		align-items: flex-start;
+		justify-content: flex-start;
+		width: 100%;
+	}
+
+	.gg-header .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item {
+		justify-content: flex-start;
+	}
+}
+
+/* Cover overlays: core hides the dim layer at dimRatio 0 (opacity 0); each component
+ * paints its own overlay on that layer instead. */
+:is(.gg-hero, .gg-closing, .gg-mid-cta, .gg-dark-cta, .gg-status) > .wp-block-cover__background {
+	opacity: 1 !important;
+}
+
+/* ---------------------------------------------------------------------------
+ * Page heroes — Figma "Corporate / Maritime Hero Content": 866px tall, the approved
+ * vertical logo at 220px, then eyebrow, H1, lead and actions 21px apart.
+ * ------------------------------------------------------------------------ */
+
+.gg-hero.wp-block-cover {
+	align-items: flex-start;
+	min-height: 866px;
+	padding: 220px 24px 64px;
+	background: var(--gg-page);
+}
+
+.gg-hero .wp-block-cover__image-background {
+	object-fit: cover;
+}
+
+.gg-hero .wp-block-cover__background.wp-block-cover__background {
+	opacity: 1;
+	background: linear-gradient(180deg, rgba(2, 8, 18, 0.05) 0%, rgba(2, 8, 18, 0.45) 25%, rgba(2, 8, 18, 0.6) 50%, rgba(2, 8, 18, 0.85) 75%, #020812 100%);
+}
+
+.gg-hero .wp-block-cover__inner-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 21px;
+	width: min(940px, 100%);
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+	color: var(--gg-white);
+}
+
+.gg-hero .gg-hero__logo,
+.gg-hero .gg-hero__logo img {
+	display: block;
+	margin: 0;
+}
+
+.gg-hero .gg-hero__logo img {
+	width: auto;
+	height: 199px;
+	max-width: 100%;
+	object-fit: contain;
+}
+
+.gg-hero .gg-hero__eyebrow {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 24px;
+	letter-spacing: 4px;
+	text-transform: uppercase;
+	text-shadow: var(--gg-hero-shadow);
+}
+
+.gg-hero .gg-hero__title {
+	font-size: 44px;
+	font-weight: 400;
+	line-height: 54px;
+	letter-spacing: 0.1px;
+	text-shadow: var(--gg-hero-shadow);
+	color: var(--gg-white);
+}
+
+.gg-hero .gg-hero__lead {
+	max-width: 760px;
+	font-size: 16px;
+	line-height: 27px;
+	letter-spacing: 0.2px;
+	text-shadow: var(--gg-hero-shadow);
+}
+
+.gg-hero .gg-hero__actions {
+	gap: 20px;
+	justify-content: center;
+}
+
+/* Editorial hero (News Archive, Newsroom, posts): logo centred, copy left at 440px. */
+.gg-hero--editorial.wp-block-cover {
+	min-height: 776px;
+}
+
+.gg-hero--editorial .wp-block-cover__inner-container {
+	display: block;
+	width: var(--gg-container);
+	max-width: none;
+	text-align: left;
+}
+
+.gg-hero--editorial .gg-hero__logo {
+	width: fit-content;
+	margin: 0 auto;
+}
+
+.gg-hero--editorial .gg-hero__content {
+	margin-top: 21px;
+}
+
+.gg-hero--editorial .gg-hero__eyebrow {
+	font-size: 14px;
+	line-height: 18px;
+	letter-spacing: 3px;
+	color: var(--gg-accent);
+	text-shadow: none;
+}
+
+.gg-hero--editorial .gg-hero__title {
+	max-width: 1040px;
+	min-height: 108px;
+	margin-top: 27px;
+	line-height: 56px;
+	letter-spacing: 0;
+	text-shadow: none;
+}
+
+.gg-hero--editorial .gg-hero__lead {
+	max-width: 930px;
+	margin-top: 21px;
+	line-height: 24px;
+	letter-spacing: 0;
+	text-shadow: none;
+}
+
+/* ---------------------------------------------------------------------------
+ * Cards
+ * ------------------------------------------------------------------------ */
+
+.gg-grid {
+	display: grid;
+	gap: 20px 40px;
+}
+
+.gg-grid--3 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 24px;
+}
+
+.gg-grid--4 {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gg-grid--7 {
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.gg-card {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid var(--gg-accent);
+	border-radius: 6px;
+	background: var(--gg-card);
+	text-align: left;
+}
+
+.gg-card__num {
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 18px;
+	letter-spacing: 1.4px;
+	color: var(--gg-accent);
+}
+
+.gg-card__label {
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 18px;
+	letter-spacing: 1.4px;
+	text-transform: uppercase;
+	color: var(--gg-accent);
+}
+
+.gg-card__title {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	letter-spacing: 0.8px;
+	text-transform: uppercase;
+	color: var(--gg-white);
+}
+
+.gg-card__text {
+	font-size: 12px;
+	line-height: 18px;
+	letter-spacing: 0;
+	color: var(--gg-muted);
+}
+
+/* Image card (About team / office, Careers): 416px wide, 220px image, 24px body. */
+.gg-image-card {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	border: 1px solid var(--gg-accent);
+	border-radius: 6px;
+	background: var(--gg-card-solid);
+}
+
+.gg-image-card .gg-image-card__media {
+	margin: -1px -1px 0;
+}
+
+.gg-image-card .gg-image-card__media img {
+	display: block;
+	width: 100%;
+	height: 220px;
+	object-fit: cover;
+}
+
+.gg-image-card__body {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	padding: 23px 23px 28px;
+}
+
+.gg-image-card__title {
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 28px;
+	letter-spacing: 0;
+	color: var(--gg-white);
+}
+
+.gg-image-card__text {
+	font-size: 12px;
+	line-height: 18px;
+	color: var(--gg-muted);
+}
+
+/* ---------------------------------------------------------------------------
+ * Closing CTA — Figma "Global Closing CTA / Explore": 360px, image under a 45% navy veil.
+ * ------------------------------------------------------------------------ */
+
+.gg-closing.wp-block-cover {
+	min-height: 360px;
+	padding: 54px 0 82px;
+	background: var(--gg-page);
+}
+
+.gg-closing .wp-block-cover__background.wp-block-cover__background {
+	opacity: 1;
+	background: rgba(1, 5, 10, 0.45);
+}
+
+.gg-closing .wp-block-cover__inner-container {
+	width: 100%;
+	text-align: center;
+	color: var(--gg-white);
+}
+
+.gg-closing .gg-title {
+	max-width: 960px;
+	margin: 20px auto 0;
+}
+
+.gg-closing .gg-intro {
+	max-width: 1100px;
+	margin-top: 20px;
+}
+
+.gg-closing .gg-closing__actions {
+	justify-content: center;
+	margin-top: 20px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Mid-page CTA — Figma "ND / Global / Mid-page CTA": 340px, heading left, copy right.
+ * ------------------------------------------------------------------------ */
+
+.gg-mid-cta.wp-block-cover {
+	min-height: 340px;
+	padding: 52px 0 72px;
+	background: var(--gg-card-solid);
+}
+
+.gg-mid-cta .wp-block-cover__background.wp-block-cover__background {
+	opacity: 1;
+	background: linear-gradient(90deg, rgba(2, 8, 18, 0.55) 0%, rgba(2, 8, 18, 0.7) 50%, rgba(2, 8, 18, 0.84) 100%);
+}
+
+.gg-mid-cta .wp-block-cover__inner-container {
+	width: 100%;
+	color: var(--gg-white);
+}
+
+.gg-mid-cta .gg-container {
+	display: grid;
+	grid-template-columns: minmax(0, 718fr) minmax(0, 578fr);
+	align-items: start;
+}
+
+.gg-mid-cta .gg-eyebrow {
+	font-weight: 600;
+}
+
+.gg-mid-cta .gg-title {
+	max-width: 620px;
+	margin-top: 18px;
+}
+
+.gg-mid-cta__rule {
+	width: 72px;
+	height: 2px;
+	margin-top: 22px;
+	background: var(--gg-accent);
+}
+
+.gg-mid-cta__body {
+	max-width: 560px;
+	padding-top: 22px;
+}
+
+.gg-mid-cta__text {
+	font-size: 15px;
+	line-height: 26px;
+	letter-spacing: 0.1px;
+	color: var(--gg-white);
+}
+
+.gg-mid-cta__actions {
+	margin-top: 38px;
+}
+
+/* ---------------------------------------------------------------------------
+ * FAQ — Figma "ND / FAQ": centred 960px column, numbered accordion rows.
+ * ------------------------------------------------------------------------ */
+
+.gg-faq.gg-section {
+	padding: 96px 0;
+}
+
+.gg-faq .gg-faq__heading {
+	max-width: 960px;
+	margin-inline: auto;
+}
+
+.gg-faq .gg-faq__heading .gg-title {
+	margin-top: 12px;
+}
+
+.gg-faq .gg-faq__heading .gg-intro {
+	max-width: 820px;
+	margin-top: 12px;
+	color: var(--gg-muted);
+}
+
+.gg-faq .gg-faq__list {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	max-width: 960px;
+	margin: 48px auto 0;
+	counter-reset: gg-faq;
+}
+
+.gg-faq .gg-faq__item {
+	margin: 0;
+	border: 1px solid rgba(39, 124, 224, 0.55);
+	border-radius: 6px;
+	background: var(--gg-card);
+	counter-increment: gg-faq;
+}
+
+.gg-faq .gg-faq__item summary {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 19px 23px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	color: var(--gg-white);
+	list-style: none;
+	cursor: pointer;
+}
+
+.gg-faq .gg-faq__item summary::-webkit-details-marker {
+	display: none;
+}
+
+.gg-faq .gg-faq__item summary::before {
+	content: counter(gg-faq, decimal-leading-zero);
+	flex: 0 0 32px;
+	font-size: 12px;
+	line-height: 18px;
+	letter-spacing: 1.4px;
+	color: var(--gg-accent);
+}
+
+/* Plus icon: 8 × 1.5px bars in a 20px box; the vertical bar folds away when open. */
+.gg-faq .gg-faq__item summary::after {
+	content: "";
+	flex: 0 0 20px;
+	height: 20px;
+	margin-left: auto;
+	background:
+		linear-gradient(var(--gg-accent), var(--gg-accent)) center / 8px 1.5px no-repeat,
+		linear-gradient(var(--gg-accent), var(--gg-accent)) center / 1.5px 8px no-repeat;
+	transition: background-size var(--gg-transition);
+}
+
+.gg-faq .gg-faq__item[open] summary::after {
+	background-size: 8px 1.5px, 1.5px 0;
+}
+
+.gg-faq .gg-faq__answer {
+	padding: 0 60px 22px 72px;
+	font-size: 14px;
+	line-height: 22px;
+	color: var(--gg-muted);
+}
+
+/* ---------------------------------------------------------------------------
+ * Status pages — 404 and Thank You: full-screen image, centred stack.
+ * ------------------------------------------------------------------------ */
+
+.gg-status.wp-block-cover {
+	align-items: flex-start;
+	min-height: 100vh;
+	min-height: 100svh;
+	padding: max(calc(var(--gg-header-height) + 48px), 27.8vh) 24px 80px;
+	background: var(--gg-page);
+}
+
+.gg-status .wp-block-cover__background.wp-block-cover__background {
+	opacity: 1;
+	background: linear-gradient(180deg, rgba(1, 5, 10, 0.08), rgba(1, 5, 10, 0.32));
+}
+
+.gg-status .wp-block-cover__inner-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: min(940px, 100%);
+	margin: 0 auto;
+	text-align: center;
+	text-shadow: var(--gg-hero-shadow);
+	color: var(--gg-white);
+}
+
+.gg-status .gg-status__code {
+	font-size: 96px;
+	font-weight: 500;
+	line-height: 110px;
+	color: var(--gg-accent);
+}
+
+.gg-status .gg-status__title {
+	margin-top: 22px;
+	font-size: 34px;
+	font-weight: 600;
+	line-height: 42px;
+	color: var(--gg-white);
+}
+
+.gg-status .gg-status__rule {
+	width: 56px;
+	height: 2px;
+	margin-top: 22px;
+	border-radius: 1px;
+	background: var(--gg-accent);
+}
+
+.gg-status .gg-status__text {
+	max-width: 760px;
+	margin-top: 22px;
+	font-size: 15px;
+	line-height: 26px;
+	color: var(--gg-muted);
+}
+
+.gg-status .gg-status__actions {
+	margin-top: 22px;
+	text-shadow: none;
+}
+
+.gg-status--thanks.wp-block-cover {
+	padding-top: max(calc(var(--gg-header-height) + 48px), 32.4vh);
+}
+
+.gg-status--thanks .wp-block-cover__inner-container {
+	width: min(760px, 100%);
+}
+
+.gg-status--thanks .gg-status__title {
+	margin-top: 18px;
+	font-size: 44px;
+	line-height: 54px;
+}
+
+.gg-status--thanks .gg-status__text {
+	margin-top: 18px;
+}
+
+.gg-status--thanks .gg-status__actions {
+	margin-top: 24px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Footer — Figma "Global Footer / Desktop" on the shared 1296px container, brand left, four columns,
+ * legal row below.
+ * ------------------------------------------------------------------------ */
+
+.gg-footer.gg-footer {
+	margin: 0;
+	padding: 48px 0 38px;
+	background: var(--gg-page);
+}
+
+.gg-footer .gg-footer__container {
+	width: var(--gg-container);
+	margin: 0 auto;
+}
+
+.gg-footer :where(.wp-block-group, p, h2, ul, li, figure) {
+	margin: 0;
+}
+
+.gg-footer .gg-footer__accent {
+	width: 72px;
+	height: 2px;
+	margin-inline: auto;
+	background: var(--gg-accent);
+}
+
+.gg-footer .gg-footer__main {
+	display: grid;
+	grid-template-columns: minmax(0, 458fr) minmax(0, 210fr) minmax(0, 225fr) minmax(0, 188fr) minmax(0, 235fr);
+	align-items: start;
+	margin-top: 50px;
+}
+
+.gg-footer .gg-footer__logo {
+	padding-top: 14px;
+}
+
+.gg-footer .gg-footer__logo a,
+.gg-footer .gg-footer__logo img {
+	display: block;
+}
+
+.gg-footer .gg-footer__logo img {
+	width: 200px;
+	height: auto;
+}
+
+.gg-footer .gg-footer__tagline {
+	max-width: 400px;
+	margin-top: 14px;
+	font-size: 14px;
+	line-height: 22px;
+	letter-spacing: 0.1px;
+	color: var(--gg-muted);
+}
+
+.gg-footer .gg-footer__heading {
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 18px;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+	color: var(--gg-accent);
+}
+
+.gg-footer .gg-footer__links,
+.gg-footer .gg-footer__contact {
+	margin-top: 14px;
+	padding: 0;
+	list-style: none;
+}
+
+.gg-footer .gg-footer__links a {
+	display: block;
+	font-size: 13px;
+	line-height: 20px;
+	text-decoration: none;
+	color: var(--gg-soft);
+	transition: color var(--gg-transition);
+}
+
+.gg-footer a:hover,
+.gg-footer a:focus-visible {
+	color: var(--gg-white);
+}
+
+.gg-footer .gg-footer__contact {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.gg-footer .gg-footer__contact a {
+	position: relative;
+	display: block;
+	padding-left: 27px;
+	font-size: 13px;
+	line-height: 22px;
+	text-decoration: none;
+	color: var(--gg-soft);
+	transition: color var(--gg-transition);
+}
+
+.gg-footer .gg-footer__contact a::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 18px;
+	font-size: 13px;
+	line-height: 22px;
+	text-align: center;
+	color: var(--gg-accent);
+}
+
+.gg-footer .gg-footer__contact-email a::before {
+	content: "@";
+}
+
+.gg-footer .gg-footer__contact-phone a::before {
+	content: "T";
+}
+
+.gg-footer .gg-footer__contact-address a::before {
+	content: "";
+	height: 22px;
+	background: url("../icons/footer-location.svg") center / 18px 22px no-repeat;
+}
+
+.gg-footer .gg-footer__legal {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px 44px;
+	margin-top: 77px;
+	font-size: 12px;
+	line-height: 18px;
+	letter-spacing: 0.7px;
+	color: var(--gg-muted);
+}
+
+.gg-footer .gg-footer__copyright,
+.gg-footer .gg-footer__legal-links {
+	font: inherit;
+	letter-spacing: inherit;
+	color: inherit;
+}
+
+.gg-footer .gg-footer__legal-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 44px;
+}
+
+.gg-footer .gg-footer__legal-links a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* ===========================================================================
+ * Tablet (below 1200px)
+ * ======================================================================== */
+
+@media (max-width: 1199px) {
+	:root {
+		--gg-header-height: 72px;
+	}
+
+	.gg-header .gg-header__logo {
+		margin-top: 0;
+	}
+
+	.gg-header .gg-header__logo img {
+		width: 150px;
+	}
+
+	.gg-grid--4 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 20px 24px;
+	}
+
+	.gg-grid--3 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.gg-grid--7 {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.gg-hero.wp-block-cover {
+		min-height: 760px !important;
+		padding-top: calc(var(--gg-header-height) + 96px);
+	}
+
+	.gg-hero .gg-hero__logo img {
+		height: 170px;
+	}
+
+	.gg-hero .gg-hero__title {
+		font-size: 38px;
+		line-height: 48px;
+	}
+
+	.gg-hero--editorial.wp-block-cover {
+		min-height: 680px !important;
+	}
+
+	.gg-mid-cta .gg-container {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: 40px;
+	}
+
+	.gg-faq.gg-section {
+		padding: 72px 0;
+	}
+
+	/* Footer: brand on its own row, then the four columns. */
+	.gg-footer .gg-footer__main {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 40px 24px;
+	}
+
+	.gg-footer .gg-footer__brand {
+		grid-column: 1 / -1;
+	}
+
+	.gg-footer .gg-footer__logo {
+		padding-top: 0;
+	}
+
+	.gg-footer .gg-footer__legal {
+		margin-top: 56px;
+	}
+}
+
+/* ===========================================================================
+ * Mobile (below 768px)
+ * ======================================================================== */
+
+@media (max-width: 767px) {
+	:root {
+		--gg-header-height: 64px;
+	}
+
+	.gg-header .gg-header__logo img {
+		width: 132px;
+	}
+
+	.gg-header .gg-header__lang {
+		height: 32px;
+		padding-left: 16px;
+	}
+
+	.gg-header .gg-header__lang span {
+		width: auto;
+		margin-top: 0;
+	}
+
+	.gg-header nav.gg-header__nav {
+		margin-left: 20px;
+	}
+
+	.gg-section {
+		padding: 56px 0;
+	}
+
+	.gg-title {
+		font-size: 26px;
+		line-height: 34px;
+	}
+
+	.gg-heading .gg-accent {
+		margin-bottom: 28px;
+	}
+
+	.gg-heading .gg-title {
+		margin-top: 16px;
+	}
+
+	.gg-heading + * {
+		margin-top: 32px;
+	}
+
+	.gg-heading--listing {
+		padding-top: 8px;
+	}
+
+	.gg-grid--3,
+	.gg-grid--4 {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 16px;
+	}
+
+	.gg-grid--7 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 12px;
+	}
+
+	.gg-bar {
+		padding: 16px;
+		line-height: 18px;
+	}
+
+	.gg-hero.wp-block-cover {
+		min-height: 0 !important;
+		padding: calc(var(--gg-header-height) + 56px) 24px 64px;
+	}
+
+	.gg-hero .wp-block-cover__inner-container {
+		gap: 16px;
+	}
+
+	.gg-hero .gg-hero__logo img {
+		height: 128px;
+	}
+
+	.gg-hero .gg-hero__eyebrow {
+		font-size: 12px;
+		line-height: 20px;
+		letter-spacing: 1.6px;
+	}
+
+	.gg-hero .gg-hero__title {
+		font-size: 28px;
+		line-height: 36px;
+		letter-spacing: 0;
+	}
+
+	.gg-hero .gg-hero__lead {
+		font-size: 15px;
+		line-height: 25px;
+	}
+
+	.gg-hero .gg-hero__actions {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 12px;
+		width: 100%;
+		max-width: 320px;
+	}
+
+	.gg-hero .gg-hero__actions .wp-block-button,
+	.gg-hero .gg-hero__actions .wp-block-button__link {
+		width: 100%;
+	}
+
+	.gg-hero--editorial.wp-block-cover {
+		min-height: 0 !important;
+	}
+
+	.gg-hero--editorial .gg-hero__content {
+		margin-top: 40px;
+	}
+
+	.gg-hero--editorial .gg-hero__title {
+		min-height: 0;
+		margin-top: 16px;
+		line-height: 36px;
+	}
+
+	.gg-hero--editorial .gg-hero__lead {
+		margin-top: 16px;
+	}
+
+	.gg-closing.wp-block-cover {
+		padding: 56px 0 64px;
+	}
+
+	.gg-closing .gg-intro {
+		font-size: 14px;
+		line-height: 24px;
+	}
+
+	.gg-closing .gg-closing__actions {
+		margin-top: 28px;
+	}
+
+	.gg-mid-cta.wp-block-cover {
+		padding: 56px 0 64px;
+	}
+
+	.gg-mid-cta .gg-container {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 0;
+	}
+
+	.gg-mid-cta__actions {
+		margin-top: 28px;
+	}
+
+	.gg-faq.gg-section {
+		padding: 56px 0;
+	}
+
+	.gg-faq .gg-faq__list {
+		margin-top: 32px;
+		gap: 12px;
+	}
+
+	.gg-faq .gg-faq__item summary {
+		align-items: flex-start;
+		gap: 12px;
+		padding: 18px 16px;
+	}
+
+	.gg-faq .gg-faq__item summary::before {
+		flex-basis: 24px;
+		line-height: 20px;
+	}
+
+	.gg-faq .gg-faq__answer {
+		padding: 0 16px 20px 52px;
+	}
+
+	.gg-status .gg-status__code {
+		font-size: 72px;
+		line-height: 84px;
+	}
+
+	.gg-status .gg-status__title,
+	.gg-status--thanks .gg-status__title {
+		font-size: 28px;
+		line-height: 36px;
+	}
+
+	/* Footer: one column, legal row stacked. */
+	.gg-footer.gg-footer {
+		padding: 48px 0 40px;
+	}
+
+	.gg-footer .gg-footer__main {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 36px 24px;
+		margin-top: 40px;
+	}
+
+	.gg-footer .gg-footer__col--connect {
+		grid-column: 1 / -1;
+	}
+
+	.gg-footer .gg-footer__legal {
+		flex-direction: column;
+		align-items: flex-start;
+		margin-top: 48px;
+		padding-top: 24px;
+		border-top: 1px solid rgba(39, 124, 224, 0.2);
+	}
+
+	.gg-footer .gg-footer__legal-links {
+		gap: 8px 24px;
+	}
+}

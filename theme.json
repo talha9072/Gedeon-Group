@@ -1,0 +1,348 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.8/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "useRootPaddingAwareAlignments": true,
+    "layout": {
+      "contentSize": "1060px",
+      "wideSize": "1296px"
+    },
+    "color": {
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "defaultDuotone": false,
+      "palette": [
+        {
+          "slug": "page",
+          "color": "#020812",
+          "name": "Page Navy"
+        },
+        {
+          "slug": "navy",
+          "color": "#07111F",
+          "name": "Ink Navy"
+        },
+        {
+          "slug": "surface",
+          "color": "#0C151E",
+          "name": "Card Surface"
+        },
+        {
+          "slug": "white",
+          "color": "#FFFFFF",
+          "name": "White"
+        },
+        {
+          "slug": "soft",
+          "color": "#D1D9E3",
+          "name": "Soft Text"
+        },
+        {
+          "slug": "muted",
+          "color": "#A7AFBA",
+          "name": "Muted Text"
+        },
+        {
+          "slug": "accent",
+          "color": "#277CE0",
+          "name": "Gedeon Blue"
+        },
+        {
+          "slug": "button",
+          "color": "#159DE8",
+          "name": "Button Blue"
+        },
+        {
+          "slug": "megayachts",
+          "color": "#4787F4",
+          "name": "MegaYachts"
+        },
+        {
+          "slug": "passenger",
+          "color": "#F7751A",
+          "name": "Passenger Yachts"
+        },
+        {
+          "slug": "river",
+          "color": "#41C57C",
+          "name": "River Passenger Ships"
+        }
+      ],
+      "gradients": [
+        {
+          "slug": "hero-overlay",
+          "name": "Hero Overlay",
+          "gradient": "linear-gradient(180deg, rgba(2, 8, 18, 0.05) 0%, rgba(2, 8, 18, 0.45) 25%, rgba(2, 8, 18, 0.6) 50%, rgba(2, 8, 18, 0.85) 75%, rgb(2, 8, 18) 100%)"
+        }
+      ]
+    },
+    "spacing": {
+      "defaultSpacingSizes": false,
+      "units": [
+        "px",
+        "rem",
+        "%",
+        "vh",
+        "vw"
+      ],
+      "spacingSizes": [
+        {
+          "slug": "xs",
+          "size": "8px",
+          "name": "XS · 8"
+        },
+        {
+          "slug": "sm",
+          "size": "16px",
+          "name": "SM · 16"
+        },
+        {
+          "slug": "md",
+          "size": "24px",
+          "name": "MD · 24"
+        },
+        {
+          "slug": "lg",
+          "size": "40px",
+          "name": "LG · 40"
+        },
+        {
+          "slug": "xl",
+          "size": "64px",
+          "name": "XL · 64"
+        },
+        {
+          "slug": "section",
+          "size": "clamp(3rem, 1.5rem + 6vw, 6.25rem)",
+          "name": "Section · 48–100"
+        }
+      ]
+    },
+    "typography": {
+      "defaultFontSizes": false,
+      "fluid": {
+        "minViewportWidth": "390px",
+        "maxViewportWidth": "1280px"
+      },
+      "fontFamilies": [
+        {
+          "slug": "montserrat",
+          "name": "Montserrat",
+          "fontFamily": "Montserrat, ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", sans-serif",
+          "fontFace": [
+            {
+              "fontFamily": "Montserrat",
+              "fontStyle": "normal",
+              "fontWeight": "400 700",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/fonts/montserrat-latin-variable.woff2"
+              ]
+            }
+          ]
+        }
+      ],
+      "fontSizes": [
+        {
+          "slug": "label",
+          "size": "12px",
+          "name": "Label · 12",
+          "fluid": false
+        },
+        {
+          "slug": "small",
+          "size": "13px",
+          "name": "Body Small · 13",
+          "fluid": false
+        },
+        {
+          "slug": "nav",
+          "size": "14px",
+          "name": "Navigation · 14",
+          "fluid": false
+        },
+        {
+          "slug": "body",
+          "size": "15px",
+          "name": "Body · 15",
+          "fluid": false
+        },
+        {
+          "slug": "heading-3",
+          "size": "18px",
+          "name": "H3 · 18",
+          "fluid": false
+        },
+        {
+          "slug": "body-lg",
+          "size": "20px",
+          "name": "Body Large · 17–20",
+          "fluid": {
+            "min": "17px",
+            "max": "20px"
+          }
+        },
+        {
+          "slug": "heading-2",
+          "size": "34px",
+          "name": "H2 · 26–34",
+          "fluid": {
+            "min": "26px",
+            "max": "34px"
+          }
+        },
+        {
+          "slug": "heading-1",
+          "size": "44px",
+          "name": "H1 · 30–44",
+          "fluid": {
+            "min": "30px",
+            "max": "44px"
+          }
+        }
+      ]
+    },
+    "custom": {
+      "header-height": "96px",
+      "transition": "0.25s ease"
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "var:preset|color|page",
+      "text": "var:preset|color|light"
+    },
+    "spacing": {
+      "blockGap": "0px",
+      "padding": {
+        "left": "0px",
+        "right": "0px"
+      }
+    },
+    "typography": {
+      "fontFamily": "var:preset|font-family|montserrat",
+      "fontSize": "var:preset|font-size|body",
+      "fontWeight": "400",
+      "lineHeight": "1.7334",
+      "letterSpacing": "0.1px"
+    },
+    "elements": {
+      "heading": {
+        "color": {
+          "text": "var:preset|color|white"
+        },
+        "typography": {
+          "letterSpacing": "0"
+        }
+      },
+      "h1": {
+        "typography": {
+          "fontSize": "var:preset|font-size|heading-1",
+          "fontWeight": "400",
+          "lineHeight": "1.2273"
+        }
+      },
+      "h2": {
+        "typography": {
+          "fontSize": "var:preset|font-size|heading-2",
+          "fontWeight": "600",
+          "lineHeight": "1.2353"
+        }
+      },
+      "h3": {
+        "typography": {
+          "fontSize": "var:preset|font-size|heading-3",
+          "fontWeight": "500",
+          "lineHeight": "1.3334",
+          "letterSpacing": "1.6px"
+        }
+      },
+      "link": {
+        "color": {
+          "text": "var:preset|color|soft"
+        },
+        "typography": {
+          "textDecoration": "none"
+        },
+        ":hover": {
+          "color": {
+            "text": "var:preset|color|accent"
+          }
+        },
+        ":focus": {
+          "color": {
+            "text": "var:preset|color|accent"
+          }
+        }
+      },
+      "button": {
+        "color": {
+          "background": "var:preset|color|accent",
+          "text": "var:preset|color|navy"
+        },
+        "border": {
+          "radius": "6px",
+          "width": "1px",
+          "style": "solid",
+          "color": "var:preset|color|accent"
+        },
+        "spacing": {
+          "padding": {
+            "top": "16px",
+            "right": "24px",
+            "bottom": "16px",
+            "left": "24px"
+          }
+        },
+        "typography": {
+          "fontSize": "13px",
+          "fontWeight": "600",
+          "lineHeight": "18px",
+          "letterSpacing": "1px",
+          "textTransform": "uppercase"
+        },
+        ":hover": {
+          "color": {
+            "background": "var:preset|color|white",
+            "text": "var:preset|color|navy"
+          }
+        },
+        ":focus": {
+          "color": {
+            "background": "var:preset|color|white",
+            "text": "var:preset|color|navy"
+          }
+        }
+      }
+    }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    }
+  ],
+  "customTemplates": [
+    {
+      "name": "page-thank-you",
+      "title": "Thank You",
+      "postTypes": [
+        "page"
+      ]
+    },
+    {
+      "name": "single-wide",
+      "title": "Single Post Wide",
+      "postTypes": [
+        "post"
+      ]
+    }
+  ]
+}

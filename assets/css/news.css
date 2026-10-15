@@ -1,0 +1,805 @@
+/*
+ * Gedeon Group — Newsroom, News Archive, single posts and the Privacy Policy page.
+ * Measurements from the Figma "Newsroom", "News Archive" and "Single Post Narrow / Wide"
+ * desktop frames.
+ */
+
+/* ---------------------------------------------------------------------------
+ * Listing section: label, title, search tools, category filter, grid, pagination.
+ * ------------------------------------------------------------------------ */
+
+.gg-news .gg-news__label {
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 16px;
+	letter-spacing: 2.2px;
+	text-transform: uppercase;
+	color: var(--gg-accent);
+}
+
+.gg-news .gg-news__label--featured {
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 2px;
+}
+
+.gg-news .gg-news__title {
+	margin-top: 16px;
+}
+
+.gg-news .gg-news__tools {
+	display: flex;
+	gap: 24px;
+	margin-top: 36px;
+}
+
+.gg-news .gg-news__search {
+	flex: 0 1 760px;
+	margin: 0;
+}
+
+.gg-news .gg-news__search .wp-block-search__inside-wrapper {
+	padding: 0;
+	border: 0;
+}
+
+.gg-news .gg-news__search input,
+.gg-news .gg-news__categories select {
+	box-sizing: border-box;
+	width: 100%;
+	height: 48px;
+	margin: 0;
+	padding: 0 16px;
+	border: 1px solid rgba(39, 124, 224, 0.45);
+	border-radius: 6px;
+	background: var(--gg-card);
+	font: inherit;
+	font-size: 13px;
+	line-height: 20px;
+	color: var(--gg-white);
+}
+
+.gg-news .gg-news__search input::placeholder {
+	color: var(--gg-muted);
+	opacity: 1;
+}
+
+.gg-news .gg-news__categories {
+	flex: 0 1 280px;
+	position: relative;
+	margin: 0;
+}
+
+.gg-news .gg-news__categories label {
+	position: absolute;
+	top: 0;
+	left: 0;
+	white-space: nowrap;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+}
+
+.gg-news .gg-news__categories select {
+	padding-right: 44px;
+	border-color: rgba(39, 124, 224, 0.25);
+	background: rgba(12, 21, 30, 0.94) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23277ce0' d='M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z'/%3E%3C/svg%3E") right 22px center / 10px 10px no-repeat;
+	-webkit-appearance: none;
+	appearance: none;
+	cursor: pointer;
+}
+
+.gg-news .gg-news__categories select option {
+	background: var(--gg-page);
+}
+
+.gg-news .gg-news__search input:focus,
+.gg-news .gg-news__categories select:focus {
+	border-color: var(--gg-accent);
+	outline: none;
+}
+
+.gg-news .gg-news-filter {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px 24px;
+	min-height: 48px;
+	margin-top: 24px;
+	padding: 0 24px;
+	border-radius: 6px;
+	background: rgba(12, 21, 30, 0.45);
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 16px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.gg-news .gg-news-filter a {
+	text-decoration: none;
+	white-space: nowrap;
+	color: var(--gg-muted);
+	transition: color var(--gg-transition);
+}
+
+.gg-news .gg-news-filter a:hover,
+.gg-news .gg-news-filter a[aria-current="page"] {
+	color: var(--gg-accent);
+}
+
+.gg-news .gg-news__query {
+	margin-top: 32px;
+}
+
+.gg-news--newsroom .gg-featured {
+	margin-top: 22px;
+}
+
+.gg-news--newsroom .gg-news-filter {
+	margin-top: 100px;
+}
+
+.gg-news__empty {
+	padding: 40px 0;
+	font-size: 15px;
+	line-height: 26px;
+	text-align: center;
+	color: var(--gg-muted);
+}
+
+/* Post grid: three 416px columns, 24px apart, rows 64px apart. */
+.gg-post-grid.wp-block-post-template {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 64px 24px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.gg-post-grid > li {
+	display: flex;
+	margin: 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * Article card (Figma "Editorial Card / Desktop", 416 × 496).
+ * ------------------------------------------------------------------------ */
+
+.gg-post-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	min-height: 496px;
+	overflow: hidden;
+	border: 1px solid rgba(39, 124, 224, 0.55);
+	border-radius: 6px;
+	background: var(--gg-card);
+	transition: border-color 0.16s ease, transform 0.16s ease;
+}
+
+.gg-post-card:hover,
+.gg-post-card:focus-within {
+	border-color: var(--gg-accent);
+	transform: translateY(-2px);
+}
+
+.gg-post-card .gg-post-card__media {
+	margin: -1px -1px 0;
+}
+
+.gg-post-card .gg-post-card__media a,
+.gg-post-card .gg-post-card__media img {
+	display: block;
+}
+
+.gg-post-card .gg-post-card__media img {
+	width: 100%;
+	height: 220px;
+	object-fit: cover;
+}
+
+.gg-post-card .gg-post-card__body {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	padding: 23px 23px 28px;
+}
+
+.gg-post-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 18px;
+	letter-spacing: 1.1px;
+	text-transform: uppercase;
+	color: var(--gg-accent);
+}
+
+.gg-post-meta > * {
+	margin: 0;
+}
+
+.gg-post-meta > * + *::before {
+	content: "·";
+	margin: 0 0.45em;
+}
+
+.gg-post-meta a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.gg-post-card .gg-post-card__title {
+	min-height: 52px;
+	margin-top: 14px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 26px;
+	letter-spacing: 0;
+	text-transform: none;
+}
+
+.gg-post-card--related .gg-post-card__title {
+	font-size: 18px;
+}
+
+.gg-post-card__title a,
+.gg-feature-card__title a {
+	text-decoration: none;
+	color: var(--gg-white);
+}
+
+/* The whole card links through the title. */
+.gg-post-card__title a::after,
+.gg-feature-card__title a::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+}
+
+.gg-post-card .gg-post-card__excerpt {
+	margin-top: 24px;
+	font-size: 12px;
+	line-height: 18px;
+	color: var(--gg-muted);
+}
+
+.gg-post-card__excerpt p,
+.gg-feature-card__excerpt p {
+	margin: 0;
+}
+
+.gg-post-card .wp-block-post-excerpt__more-text {
+	display: none;
+}
+
+.gg-post-card__link.wp-block-read-more {
+	position: relative;
+	z-index: 2;
+	align-self: flex-start;
+	margin-top: auto;
+	padding-top: 24px;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 18px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: var(--gg-accent);
+}
+
+.gg-post-card__link.wp-block-read-more::after {
+	content: "";
+	display: inline-block;
+	width: 8px;
+	height: 9px;
+	margin-left: 16px;
+	background: currentColor;
+	-webkit-mask: var(--gg-arrow) center / contain no-repeat;
+	mask: var(--gg-arrow) center / contain no-repeat;
+	transition: transform var(--gg-transition);
+}
+
+.gg-post-card__link.wp-block-read-more:hover::after {
+	transform: translateX(4px);
+}
+
+/* Featured story (Figma "Editorial / Featured Story", 1296 × 360). */
+.gg-featured .wp-block-post-template {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.gg-feature-card {
+	position: relative;
+	display: grid;
+	grid-template-columns: minmax(0, 520px) minmax(0, 1fr);
+	gap: 40px;
+	min-height: 360px;
+	padding: 23px;
+	border: 1px solid rgba(39, 124, 224, 0.55);
+	border-radius: 6px;
+	background: var(--gg-card);
+	transition: border-color 0.16s ease;
+}
+
+.gg-feature-card:hover,
+.gg-feature-card:focus-within {
+	border-color: var(--gg-accent);
+}
+
+.gg-feature-card .gg-feature-card__media,
+.gg-feature-card .gg-feature-card__media a {
+	display: block;
+	margin: 0;
+}
+
+.gg-feature-card .gg-feature-card__media img {
+	display: block;
+	width: 100%;
+	height: 312px;
+	border-radius: 4px;
+	object-fit: cover;
+}
+
+.gg-feature-card .gg-feature-card__body {
+	display: flex;
+	flex-direction: column;
+	max-width: 620px;
+	padding: 32px 0 28px;
+}
+
+.gg-feature-card .gg-post-meta {
+	letter-spacing: 1.2px;
+}
+
+.gg-feature-card .gg-feature-card__title {
+	margin-top: 18px;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 28px;
+	letter-spacing: 0;
+	text-transform: none;
+}
+
+.gg-feature-card .gg-feature-card__excerpt {
+	margin-top: 20px;
+	font-size: 12px;
+	line-height: 20px;
+	color: var(--gg-muted);
+}
+
+.gg-feature-card .wp-block-post-excerpt__more-text {
+	display: none;
+}
+
+/* Pagination: 40px squares, current page filled. */
+.gg-pagination.wp-block-query-pagination {
+	gap: 18px;
+	margin-top: 64px;
+	font-size: 11px;
+	line-height: 16px;
+}
+
+.gg-pagination .wp-block-query-pagination-numbers {
+	display: flex;
+	gap: 18px;
+}
+
+.gg-pagination .page-numbers,
+.gg-pagination .wp-block-query-pagination-previous,
+.gg-pagination .wp-block-query-pagination-next {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	min-width: 40px;
+	height: 40px;
+	margin: 0;
+	padding: 0 12px;
+	border: 1px solid #0c151e;
+	border-radius: 4px;
+	text-decoration: none;
+	color: var(--gg-muted);
+	transition: border-color var(--gg-transition), color var(--gg-transition);
+}
+
+.gg-pagination a:hover {
+	border-color: var(--gg-accent);
+	color: var(--gg-white);
+}
+
+.gg-pagination .page-numbers.current {
+	border-color: var(--gg-accent);
+	background: var(--gg-accent);
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 18px;
+	color: var(--gg-white);
+}
+
+.gg-pagination .page-numbers.dots {
+	border-color: #0c151e;
+}
+
+/* ---------------------------------------------------------------------------
+ * Single post hero (Figma "Editorial Post Hero Content").
+ * ------------------------------------------------------------------------ */
+
+.gg-hero--post .wp-block-cover__image-background {
+	opacity: 1;
+}
+
+.gg-hero--post .gg-hero__eyebrow {
+	font-size: 12px;
+	line-height: 18px;
+	letter-spacing: 2.2px;
+	text-transform: uppercase;
+}
+
+.gg-hero--post .gg-hero__eyebrow a {
+	text-decoration: none;
+	color: var(--gg-accent);
+}
+
+.gg-hero--post .gg-hero__title {
+	margin-top: 24px;
+	font-size: 44px;
+	font-weight: 400;
+}
+
+.gg-post-meta--hero {
+	margin-top: 18px;
+	font-size: 12px;
+	letter-spacing: 0.8px;
+	color: var(--gg-soft);
+}
+
+.gg-post-meta--hero > * + *::before {
+	content: "•";
+	margin: 0 0.9em;
+}
+
+/* ---------------------------------------------------------------------------
+ * Article body (Figma "Article / Content System"): 820px column, 28px rhythm;
+ * the wide template uses the full 1296px container. Also used by the Privacy Policy.
+ * ------------------------------------------------------------------------ */
+
+.gg-article.gg-article {
+	margin: 0;
+	padding: 96px 0 0;
+	background: var(--gg-page);
+}
+
+.gg-legal.gg-legal {
+	padding: 96px 0;
+}
+
+.gg-article__content > *,
+.gg-legal > * {
+	box-sizing: border-box;
+	width: min(820px, 100% - 48px);
+	max-width: none;
+	margin-inline: auto !important;
+}
+
+.gg-article--wide .gg-article__content > * {
+	width: var(--gg-container);
+}
+
+.gg-article__content > * + *,
+.gg-legal > * + * {
+	margin-top: 28px !important;
+}
+
+.gg-article__content p,
+.gg-article__content li,
+.gg-legal p {
+	font-size: 15px;
+	line-height: 26px;
+	letter-spacing: 0;
+	color: var(--gg-muted);
+}
+
+.gg-article__content h2,
+.gg-legal h2 {
+	font-size: 34px;
+	font-weight: 600;
+	line-height: 42px;
+	letter-spacing: 0;
+	color: var(--gg-white);
+}
+
+.gg-article__content h3 {
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 30px;
+	letter-spacing: 0;
+	text-transform: none;
+	color: var(--gg-white);
+}
+
+.gg-article__content a,
+.gg-legal a {
+	color: var(--gg-accent);
+}
+
+.gg-article__content ul,
+.gg-article__content ol {
+	padding: 0;
+}
+
+.gg-article__content ul {
+	list-style: none;
+}
+
+.gg-article__content ul li::before {
+	content: "•";
+	margin-right: 0.35em;
+}
+
+.gg-article__content ol {
+	list-style: decimal inside;
+}
+
+.gg-article__content li {
+	margin: 0;
+}
+
+.gg-article__content .wp-block-quote {
+	padding: 24px 28px;
+	border: 1px solid rgba(39, 124, 224, 0.8);
+	border-radius: 6px;
+	background: var(--gg-card);
+}
+
+.gg-article__content .wp-block-quote p {
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 32px;
+	color: var(--gg-white);
+}
+
+.gg-article--wide .gg-article__content .wp-block-quote p {
+	max-width: 1044px;
+}
+
+.gg-article__content .wp-block-image img {
+	display: block;
+	width: 100%;
+	height: 360px;
+	border-radius: 6px;
+	object-fit: cover;
+}
+
+.gg-article--wide .gg-article__content .wp-block-image img {
+	height: 520px;
+}
+
+.gg-article__content .wp-block-image figcaption {
+	margin: 28px 0 0;
+	font-size: 12px;
+	line-height: 18px;
+	text-align: left;
+	color: var(--gg-muted);
+}
+
+.gg-article__content .gg-article__more {
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 20px;
+}
+
+.gg-article__content .gg-article__more a {
+	text-decoration: none;
+}
+
+.gg-article__content .gg-article__more a::after {
+	content: "";
+	display: inline-block;
+	width: 11px;
+	height: 12px;
+	margin-left: 6px;
+	background: currentColor;
+	-webkit-mask: var(--gg-arrow) center / contain no-repeat;
+	mask: var(--gg-arrow) center / contain no-repeat;
+	vertical-align: -1px;
+}
+
+.gg-legal .gg-legal__updated {
+	font-size: 12px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	color: var(--gg-accent);
+}
+
+.gg-legal h2 {
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 30px;
+}
+
+/* Related posts below the article. */
+.gg-related.gg-section {
+	padding: 56px 0 67px;
+}
+
+.gg-related .gg-heading .gg-accent {
+	margin-bottom: 38px;
+}
+
+.gg-related .gg-heading .gg-title {
+	margin-top: 14px;
+}
+
+.gg-related .gg-heading + * {
+	margin-top: 32px;
+}
+
+/* ===========================================================================
+ * Tablet (below 1200px)
+ * ======================================================================== */
+
+@media (max-width: 1199px) {
+	.gg-news .gg-news-filter {
+		justify-content: flex-start;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		scrollbar-width: none;
+	}
+
+	.gg-news .gg-news-filter::-webkit-scrollbar {
+		display: none;
+	}
+
+	.gg-post-grid.wp-block-post-template {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 32px 24px;
+	}
+
+	.gg-post-card {
+		min-height: 0;
+	}
+
+	.gg-feature-card {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: 32px;
+	}
+
+	.gg-news--newsroom .gg-news-filter {
+		margin-top: 56px;
+	}
+
+	.gg-hero--post .gg-hero__title {
+		font-size: 38px;
+		line-height: 48px;
+	}
+
+	.gg-article--wide .gg-article__content .wp-block-image img {
+		height: auto;
+		aspect-ratio: 16 / 9;
+	}
+}
+
+/* ===========================================================================
+ * Mobile (below 768px)
+ * ======================================================================== */
+
+@media (max-width: 767px) {
+	.gg-news .gg-news__tools {
+		flex-direction: column;
+		gap: 12px;
+		margin-top: 24px;
+	}
+
+	.gg-news .gg-news__search,
+	.gg-news .gg-news__categories {
+		flex: none;
+		width: 100%;
+	}
+
+	.gg-news .gg-news-filter {
+		flex-wrap: wrap;
+		gap: 14px 20px;
+		padding: 16px;
+		overflow: visible;
+	}
+
+	.gg-post-grid.wp-block-post-template {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 20px;
+	}
+
+	.gg-post-card .gg-post-card__title {
+		min-height: 0;
+		font-size: 16px;
+	}
+
+	.gg-post-card .gg-post-card__excerpt {
+		margin-top: 12px;
+	}
+
+	.gg-feature-card {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 0;
+		min-height: 0;
+		padding: 0;
+		overflow: hidden;
+	}
+
+	.gg-feature-card .gg-feature-card__media img {
+		min-height: 0;
+		height: auto;
+		aspect-ratio: 16 / 9;
+		border-radius: 0;
+	}
+
+	.gg-feature-card .gg-feature-card__body {
+		padding: 20px 20px 24px;
+	}
+
+	.gg-pagination.wp-block-query-pagination {
+		gap: 8px;
+		margin-top: 40px;
+	}
+
+	.gg-pagination .wp-block-query-pagination-numbers {
+		gap: 8px;
+	}
+
+	.gg-hero--post .gg-hero__title {
+		margin-top: 16px;
+		font-size: 28px;
+		line-height: 36px;
+	}
+
+	.gg-article.gg-article {
+		padding-top: 56px;
+	}
+
+	.gg-legal.gg-legal {
+		padding: 56px 0;
+	}
+
+	.gg-article__content > * + *,
+	.gg-legal > * + * {
+		margin-top: 22px !important;
+	}
+
+	.gg-article__content h2,
+	.gg-legal h2 {
+		font-size: 26px;
+		line-height: 34px;
+	}
+
+	.gg-article__content h3 {
+		font-size: 20px;
+		line-height: 28px;
+	}
+
+	.gg-article__content .wp-block-quote {
+		padding: 20px;
+	}
+
+	.gg-article__content .wp-block-quote p {
+		font-size: 18px;
+		line-height: 28px;
+	}
+
+	.gg-article__content .wp-block-image img {
+		height: auto;
+		aspect-ratio: 820 / 360;
+	}
+
+	.gg-related.gg-section {
+		padding: 56px 0;
+	}
+}

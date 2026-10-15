@@ -1,0 +1,9 @@
+/*
+ * Editor-only adjustments. frontend.css is also loaded in the editor, so this file
+ * only covers differences between the canvas and the live site.
+ */
+
+/* The header is fixed on the frontend; in the editor it stays in normal flow. */
+.editor-styles-wrapper .gh-header {
+	position: relative;
+}
