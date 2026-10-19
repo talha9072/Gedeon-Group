@@ -820,13 +820,15 @@
 		gap: 48px;
 	}
 
+	/* Images span the full column: main photo 78% wide, inset photo overlapping bottom-right. */
 	.gg-about-intro .gg-about-intro__media {
-		max-width: 545px;
-		padding-top: 0;
+		padding: 0 0 12%;
 	}
 
-	.gg-about-intro .gg-about-intro__media {
-		padding-bottom: 40px;
+	.gg-about-intro .gg-about-intro__image img {
+		width: 78%;
+		height: auto;
+		aspect-ratio: 455 / 365;
 	}
 
 	.gg-about-intro .gg-about-intro__image--inset {
@@ -834,6 +836,18 @@
 		bottom: 0;
 		left: auto;
 		right: 0;
+		width: 40%;
+	}
+
+	.gg-about-intro .gg-about-intro__image--inset img {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 230 / 245;
+	}
+
+	/* Copy uses the same full column as the title. */
+	.gg-about-intro .gg-about-intro__text {
+		max-width: none;
 	}
 
 	.gg-about-intro .gg-title {
@@ -948,18 +962,10 @@
 @media (max-width: 767px) {
 	.gg-about-intro .gg-about-intro__image img {
 		width: 82%;
-		height: auto;
-		aspect-ratio: 455 / 365;
 	}
 
 	.gg-about-intro .gg-about-intro__image--inset {
 		width: 42%;
-	}
-
-	.gg-about-intro .gg-about-intro__image--inset img {
-		width: 100%;
-		height: auto;
-		aspect-ratio: 230 / 245;
 	}
 
 	.gg-values .gg-heading .gg-accent {

@@ -11,9 +11,9 @@
 
 $gedeon_group_vessels = gedeon_group_vessel_types();
 $gedeon_group_cards   = array(
-    array('megayachts', '01', 'Private-vessel management<br class="gg-br"> at megayacht scale.', 'Technical, nautical and operational management,<br class="gg-br"> owner representation and coordinated support—<br class="gg-br">tailored to the unique demands of megayacht<br class="gg-br"> ownership.', 'Explore MegaYachts'),
-    array('passenger', '02', 'Hospitality-led operations<br class="gg-br"> at passenger scale.', 'Integrated technical, hotel and guest operations, with<br class="gg-br"> clear owner representation and coordinated<br class="gg-br"> commercial support.', 'Explore Passenger Yachts'),
-    array('river', '03', 'River operations.<br class="gg-br"> Exceptional guest service.', 'Technical and nautical management for river routes,<br class="gg-br"> supported by hotel operations, owner representation<br class="gg-br"> and insurance coordination.', 'Explore River Vessels'),
+    array('megayachts', '01', 'Private-vessel management at megayacht scale.', 'Technical, nautical and operational management, owner representation and coordinated support—tailored to the unique demands of megayacht ownership.', 'Explore MegaYachts'),
+    array('passenger', '02', 'Hospitality-led operations at passenger scale.', 'Integrated technical, hotel and guest operations, with clear owner representation and coordinated commercial support.', 'Explore Passenger Yachts'),
+    array('river', '03', 'River operations.<br>Exceptional guest service.', 'Technical and nautical management for river routes, supported by hotel operations, owner representation and insurance coordination.', 'Explore River Vessels'),
 );
 
 $gedeon_group_inner = gedeon_group_block_rule('gg-gateway__rule')

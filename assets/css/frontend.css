@@ -383,38 +383,29 @@ body {
 	transform: scaleX(1);
 }
 
-/* Language label behind the blue divider: 1px × 44px rule, "EN" 23px after it, chevron. */
-.gg-header .gg-header__lang {
-	position: relative;
+/* Contact button — sits where the Figma language selector was, behind the blue divider. */
+.gg-header .gg-header__cta {
 	flex-shrink: 0;
-	margin-left: auto !important;
 	display: flex;
 	align-items: center;
 	height: 44px;
-	margin: 0;
+	margin: 0 0 0 auto;
 	padding-left: 24px;
 	border-left: 1px solid var(--gg-accent);
-	font-size: 14px;
-	line-height: 20px;
-	letter-spacing: 0.5px;
-	color: var(--gg-white);
 }
 
-.gg-header .gg-header__lang span {
-	display: inline-flex;
-	align-items: center;
-	gap: 9px;
-	margin-top: -8px;
+.gg-header .gg-header__cta .wp-block-button__link {
+	min-height: 40px;
+	padding: 0 20px;
+	font-size: 12px;
+	letter-spacing: 1.2px;
 }
 
-.gg-header .gg-header__lang span::after {
-	content: "";
-	width: 9px;
-	height: 9px;
-	margin-top: 5px;
-	background: currentColor;
-	-webkit-mask: var(--gg-chevron) center / contain no-repeat;
-	mask: var(--gg-chevron) center / contain no-repeat;
+/* Desktop shows the Contact button instead; the link stays in the overlay menu. */
+@media (min-width: 1280px) {
+	.gg-header .gg-nav-contact {
+		display: none;
+	}
 }
 
 /* Mobile overlay menu: close button lines up with the hamburger. */
@@ -461,7 +452,11 @@ body {
 		margin-left: 24px;
 	}
 
-	.gg-header .gg-header__lang {
+	.gg-header .gg-header__cta {
+		display: none;
+	}
+
+	.gg-header nav.gg-header__nav {
 		margin-left: auto;
 	}
 
@@ -1239,19 +1234,6 @@ body {
 		width: 132px;
 	}
 
-	.gg-header .gg-header__lang {
-		height: 32px;
-		padding-left: 16px;
-	}
-
-	.gg-header .gg-header__lang span {
-		width: auto;
-		margin-top: 0;
-	}
-
-	.gg-header nav.gg-header__nav {
-		margin-left: 20px;
-	}
 
 	.gg-section {
 		padding: 56px 0;
