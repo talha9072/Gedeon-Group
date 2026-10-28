@@ -1,10 +1,10 @@
 <?php
 /**
- * Title: MegaYachts Page
+ * Title: Private Yachts Page
  * Slug: gedeon-group/vessel-megayachts
  * Categories: gedeon-sections
- * Keywords: vessel, MegaYachts
- * Description: Full MegaYachts page — hero, introduction, priorities, how we work, CTA, outcome, support and other vessel types.
+ * Keywords: vessel, Private Yachts
+ * Description: Full Private Yachts page — hero, introduction, priorities, how we work, CTA, outcome, support and other vessel types.
  *
  * Copy lives in inc/vessels.php (gedeon_group_vessel_content()).
  *

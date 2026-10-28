@@ -15,7 +15,7 @@ echo gedeon_group_page_hero( // phpcs:ignore WordPress.Security.EscapeOutput -- 
         'image'   => 'home-hero.webp',
         'eyebrow' => 'GEDEON GROUP / MARITIME • YACHTING • CRUISE',
         'title'   => 'LUXURY HOSPITALITY AT SEA.<br>MARITIME EXCELLENCE BEHIND IT.',
-        'lead'    => 'Full-scope management for megayachts, passenger yachts and river cruise vessels—from daily operations to newbuildings, conversions and long-term asset strategy.',
+        'lead'    => 'Full-scope management for private yachts, passenger yachts and river cruise vessels—from daily operations to newbuildings, conversions and long-term asset strategy.',
         'buttons' => array(
             array('Explore our capabilities', '#capabilities'),
             array('Discuss your vessel', home_url('/contact/'), 'is-style-outline gg-button--secondary'),

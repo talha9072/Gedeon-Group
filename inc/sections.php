@@ -61,7 +61,7 @@ function gedeon_group_closing_cta(): string
 {
     $inner = gedeon_group_block_p('gg-eyebrow', __('Confidential enquiries welcomed', 'gedeon-group'))
         . gedeon_group_block_h(2, 'gg-title', __('Let’s build the next standard at sea or river.', 'gedeon-group'))
-        . gedeon_group_block_p('gg-intro', __('Across megayachts, passenger yachts and river cruise vessels, Gedeon supports full management, newbuildings, conversions and major refurbishments around one question: what should the vessel make possible for the owner, the guest and the crew?', 'gedeon-group'))
+        . gedeon_group_block_p('gg-intro', __('Across private yachts, passenger yachts and river cruise vessels, Gedeon supports full management, newbuildings, conversions and major refurbishments around one question: what should the vessel make possible for the owner, the guest and the crew?', 'gedeon-group'))
         . gedeon_group_block_buttons('gg-closing__actions', array(array(__('Explore our capabilities', 'gedeon-group'), home_url('/contact/'))));
 
     return gedeon_group_block_cover('gg-closing', get_theme_file_uri('assets/img/home-hero.webp'), gedeon_group_block_group('gg-container', $inner), 360);

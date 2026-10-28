@@ -14,7 +14,7 @@ echo gedeon_group_page_hero( // phpcs:ignore WordPress.Security.EscapeOutput -- 
         'image'   => 'contact-hero.webp',
         'eyebrow' => 'Contact',
         'title'   => 'Begin a Confidential Conversation',
-        'lead'    => 'Speak with our team about vessel management, charter support, projects, insurance or another requirement relating to a megayacht, passenger yacht or river cruise vessel.',
+        'lead'    => 'Speak with our team about vessel management, charter support, projects, insurance or another requirement relating to a private yacht, passenger yacht or river cruise vessel.',
         'buttons' => array(array('Explore our capabilities', '#contact-form')),
     )
 );

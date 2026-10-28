@@ -4,7 +4,7 @@
  * Slug: gedeon-group/about-office
  * Categories: gedeon-sections
  * Keywords: office, location, london
- * Description: "Our London Location" — the London office card and two cards for future offices.
+ * Description: "Our London Location" — the London office card and Dubai, Singapore and Miami (coming soon).
  *
  * @package Gedeon_Group
  */
@@ -12,8 +12,8 @@
 $gedeon_group_contact = gedeon_group_contact();
 
 $gedeon_group_cards = gedeon_group_image_card(
-    'office.webp',
-    'Hanover Square, London',
+    'office-london.webp',
+    'London',
     gedeon_group_block_h(3, 'gg-image-card__title', 'London, UK')
     . gedeon_group_block_p('gg-image-card__text', 'Our London office provides a central point of contact for owners, captains, professional advisers and project partners.')
     . gedeon_group_block_list(
@@ -26,10 +26,10 @@ $gedeon_group_cards = gedeon_group_image_card(
     ),
     'gg-image-card--office'
 );
-for ($gedeon_group_i = 0; $gedeon_group_i < 2; $gedeon_group_i++) {
+foreach (array('dubai' => 'Dubai', 'singapore' => 'Singapore', 'miami' => 'Miami') as $gedeon_group_city => $gedeon_group_name) {
     $gedeon_group_cards .= gedeon_group_image_card(
-        'office.webp',
-        '',
+        'office-' . $gedeon_group_city . '.webp',
+        $gedeon_group_name,
         gedeon_group_block_h(3, 'gg-image-card__title', 'Coming Soon')
         . gedeon_group_block_p('gg-image-card__text', 'Additional office locations will be added here once confirmed.'),
         'gg-image-card--office'
@@ -37,6 +37,6 @@ for ($gedeon_group_i = 0; $gedeon_group_i < 2; $gedeon_group_i++) {
 }
 
 $gedeon_group_inner = gedeon_group_listing_heading('Where to Find Us', 'Our London Location')
-    . gedeon_group_block_group('gg-grid gg-grid--3 gg-office__grid', $gedeon_group_cards);
+    . gedeon_group_block_group('gg-grid gg-grid--4 gg-office__grid', $gedeon_group_cards);
 
 echo gedeon_group_block_section('gg-office', $gedeon_group_inner); // phpcs:ignore WordPress.Security.EscapeOutput -- block markup.

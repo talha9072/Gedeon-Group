@@ -168,9 +168,9 @@
 .gg-vessel-card .gg-vessel-card__title {
 	margin-top: 28px;
 	padding: 0 32px;
-	font-size: 26px;
+	font-size: 24px;
 	font-weight: 600;
-	line-height: 34px;
+	line-height: 32px;
 	letter-spacing: 0;
 	color: #fbfcff;
 }
@@ -636,5 +636,16 @@
 @media (max-width: 420px) {
 	.gg-positioning .gg-positioning__points {
 		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+/* Keeps a title's first line together (Private Yachts card: "Private-vessel management"). */
+.gg-vessel-card .gg-nowrap {
+	white-space: nowrap;
+}
+
+@media (max-width: 359px) {
+	.gg-vessel-card .gg-nowrap {
+		white-space: normal;
 	}
 }

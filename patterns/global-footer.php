@@ -39,7 +39,7 @@ $gedeon_group_columns = array(
 <!-- /wp:image -->
 
 <!-- wp:paragraph {"className":"gg-footer__tagline"} -->
-<p class="gg-footer__tagline"><?php esc_html_e('Gedeon Group provides tailored vessel management across megayachts, passenger yachts and river passenger ships, coordinating operational, technical, financial and administrative support needs.', 'gedeon-group'); ?></p>
+<p class="gg-footer__tagline"><?php esc_html_e('Gedeon Group provides tailored vessel management across private yachts, passenger yachts and river passenger ships, coordinating operational, technical, financial and administrative support needs.', 'gedeon-group'); ?></p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group --><?php foreach ($gedeon_group_columns as $gedeon_group_heading => $gedeon_group_links) : ?>
 

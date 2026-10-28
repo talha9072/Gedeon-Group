@@ -10,7 +10,7 @@
  */
 
 $gedeon_group_specialisms = array(
-    array('MegaYachts', 'Managing a complex private asset with precision.', 'Integrated management for large private yachts where technical performance, owner priorities and guest experience must operate as one.'),
+    array('Private Yachts', 'Managing a complex private asset with precision.', 'Integrated management for large private yachts where technical performance, owner priorities and guest experience must operate as one.'),
     array('Passenger Yachts', 'Hospitality-led operations at passenger scale.', 'Guest-focused operating models combining safe operations, hotel services, crew coordination and consistent standards.'),
     array('River Cruise Vessels', 'Boutique hospitality. Specialised river operations.', 'Purpose-built operating platforms that combine intimate service, local complexity and dependable vessel performance.'),
     array('Owner Representation &amp; Responsibility', 'Clear accountability around the owner’s priorities.', 'Owner priorities stay central through clear responsibility across teams, partners, shipyards and specialist advisers.'),

@@ -1,6 +1,6 @@
 <?php
 /**
- * Vessel-type pages (MegaYachts, Passenger Yachts, River Passenger Ships).
+ * Vessel-type pages (Private Yachts, Passenger Yachts, River Passenger Ships).
  *
  * The three Figma pages share one layout: hero, introduction, priorities, how we work,
  * mid-page CTA, outcome, support, other vessel types and the closing CTA. The copy for each
@@ -17,9 +17,9 @@ function gedeon_group_vessel_content(string $key): array
 {
     $content = array(
         'megayachts' => array(
-            'hero'       => array('megayachts-hero.webp', 'MegaYachts', 'Private Yacht Management,<br>Built Around the Owner', 'Integrated technical, operational, crew, financial, charter and insurance support for complex private yachts, coordinated through one accountable management relationship.'),
-            'intro'      => array('MegaYacht Management', 'Precision Behind Every Owner Experience', 'Large private yachts demand coordinated technical performance, discretion and service.', array('Gedeon brings the technical, operational, crew, financial and administrative disciplines together around one owner-led operating plan.', 'The result is clear responsibility, consistent standards and a management structure designed to protect the yacht, the programme and the experience on board.')),
-            'priorities' => array('MegaYacht Priorities', 'A Management Platform Built for Megayacht Ownership', 'The management model is shaped around the owner, the yacht and the programme, with every discipline working to one standard.', array(
+            'hero'       => array('private-yachts-hero.webp', 'Private Yachts', 'Private Yacht Management,<br>Built Around the Owner', 'Integrated technical, operational, crew, financial, charter and insurance support for complex private yachts, coordinated through one accountable management relationship.'),
+            'intro'      => array('Private Yacht Management', 'Precision Behind Every Owner Experience', 'Large private yachts demand coordinated technical performance, discretion and service.', array('Gedeon brings the technical, operational, crew, financial and administrative disciplines together around one owner-led operating plan.', 'The result is clear responsibility, consistent standards and a management structure designed to protect the yacht, the programme and the experience on board.')),
+            'priorities' => array('Private Yacht Priorities', 'A Management Platform Built for Private Yacht Ownership', 'The management model is shaped around the owner, the yacht and the programme, with every discipline working to one standard.', array(
                 array('Owner Representation', 'Owner priorities remain central across captains, managers, shipyards, advisers and specialist partners.'),
                 array('Technical Reliability', 'Maintenance, engineering and hotel systems are coordinated around safe, reliable operation and guest comfort.'),
                 array('Crew &amp; Hospitality', 'Crew structure, service culture and onboard standards are managed as part of the operating platform.'),
@@ -37,7 +37,7 @@ function gedeon_group_vessel_content(string $key): array
                 array('Consistent standards', 'Technical, crew and service disciplines work to one agreed operating standard.'),
                 array('Clear visibility', 'Reporting keeps performance, cost and decisions visible without operational clutter.'),
             )),
-            'support'    => array('megayachts-feature.webp', 'Megayacht underway along a coastline', 'Global MegaYacht Support', 'Wherever the Programme Takes You', 'Gedeon coordinates owners, captains, shipyards and specialist partners across the yacht’s operating programme, maintaining continuity as locations and requirements change.', array(
+            'support'    => array('megayachts-feature.webp', 'Private yacht underway along a coastline', 'Global Private Yacht Support', 'Wherever the Programme Takes You', 'Gedeon coordinates owners, captains, shipyards and specialist partners across the yacht’s operating programme, maintaining continuity as locations and requirements change.', array(
                 array('International cruising', 'Operational planning and support that follows the yacht across regions and seasons.'),
                 array('Shipyard coordination', 'Clear owner representation through maintenance periods, refits and technical works.'),
                 array('Specialist network', 'Trusted technical, legal, insurance and service partners coordinated around the yacht.'),
@@ -105,7 +105,7 @@ function gedeon_group_vessel_content(string $key): array
 /**
  * Full block markup for one vessel page.
  *
- * @param string $key megayachts | passenger | river.
+ * @param string $key megayachts (Private Yachts) | passenger | river.
  */
 function gedeon_group_vessel_page(string $key): string
 {

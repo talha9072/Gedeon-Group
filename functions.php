@@ -125,10 +125,10 @@ function gedeon_group_vessel_types(): array
 {
     return array(
         'megayachts' => array(
-            'name'    => __('MegaYachts', 'gedeon-group'),
-            'label'   => __('MEGAYACHTS', 'gedeon-group'),
-            'url'     => home_url('/megayachts/'),
-            'image'   => 'megayachts-hero.webp',
+            'name'    => __('Private Yachts', 'gedeon-group'),
+            'label'   => __('PRIVATE YACHTS', 'gedeon-group'),
+            'url'     => home_url('/private-yachts/'),
+            'image'   => 'private-yachts-hero.webp',
             'summary' => __('Private-vessel management for complex yachts where technical performance, owner priorities and guest experience operate as one.', 'gedeon-group'),
         ),
         'passenger'  => array(
@@ -161,3 +161,21 @@ function gedeon_group_contact(): array
         'map'       => 'https://www.google.com/maps/search/?api=1&query=15+Hanover+Square%2C+6th+Floor%2C+London+W1S+1HS%2C+England',
     );
 }
+
+/**
+ * The Private Yachts page used to be /megayachts/ (renamed 2026-10-28): keep old links and
+ * bookmarks working with a permanent redirect.
+ */
+function gedeon_group_redirect_old_vessel_url(): void
+{
+    if (! is_404()) {
+        return;
+    }
+
+    $path = trim((string) wp_parse_url(add_query_arg(array()), PHP_URL_PATH), '/');
+    if ('megayachts' === basename($path)) {
+        wp_safe_redirect(home_url('/private-yachts/'), 301);
+        exit;
+    }
+}
+add_action('template_redirect', 'gedeon_group_redirect_old_vessel_url');

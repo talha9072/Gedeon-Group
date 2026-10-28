@@ -3,15 +3,15 @@
  * Title: Home Vessel Type Gateway
  * Slug: gedeon-group/home-gateway
  * Categories: gedeon-sections
- * Keywords: vessel types, megayachts, passenger yachts, river
- * Description: Three vessel-type cards — MegaYachts, Passenger Yachts and River Passenger Ships — each linking to its page.
+ * Keywords: vessel types, private yachts, passenger yachts, river
+ * Description: Three vessel-type cards — Private Yachts, Passenger Yachts and River Passenger Ships — each linking to its page.
  *
  * @package Gedeon_Group
  */
 
 $gedeon_group_vessels = gedeon_group_vessel_types();
 $gedeon_group_cards   = array(
-    array('megayachts', '01', 'Private-vessel management at megayacht scale.', 'Technical, nautical and operational management, owner representation and coordinated support—tailored to the unique demands of megayacht ownership.', 'Explore MegaYachts'),
+    array('megayachts', '01', '<span class="gg-nowrap">Private-vessel management</span><br>built around the owner.', 'Technical, nautical and operational management, owner representation and coordinated support—tailored to the unique demands of private yacht ownership.', 'Explore Private Yachts'),
     array('passenger', '02', 'Hospitality-led operations at passenger scale.', 'Integrated technical, hotel and guest operations, with clear owner representation and coordinated commercial support.', 'Explore Passenger Yachts'),
     array('river', '03', 'River operations.<br>Exceptional guest service.', 'Technical and nautical management for river routes, supported by hotel operations, owner representation and insurance coordination.', 'Explore River Vessels'),
 );
@@ -20,7 +20,7 @@ $gedeon_group_inner = gedeon_group_block_rule('gg-gateway__rule')
     . gedeon_group_block_group(
         'gg-heading gg-gateway__heading',
         gedeon_group_block_p('gg-eyebrow', 'Three vessel types. One management partner.')
-        . gedeon_group_block_h(2, 'gg-title', 'From Megayachts to River Vessels')
+        . gedeon_group_block_h(2, 'gg-title', 'From Private Yachts to River Vessels')
         . gedeon_group_block_p('gg-intro', 'Technical and nautical management, hospitality, owner representation, charter and insurance support—<br class="gg-br">adapted to the operating realities of each vessel type.')
     );
 
