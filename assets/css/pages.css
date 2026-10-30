@@ -59,6 +59,102 @@
 }
 
 /* ---------------------------------------------------------------------------
+ * About — Team: Stein Johnsen's 560 × 635 photo beside his 656px profile.
+ * ------------------------------------------------------------------------ */
+
+.gg-team .gg-container {
+	display: grid;
+	grid-template-columns: minmax(0, 560fr) minmax(0, 656fr);
+	gap: 80px;
+	align-items: start;
+}
+
+.gg-team .gg-team__photo img {
+	display: block;
+	width: 100%;
+	height: 635px;
+	border-radius: 6px;
+	object-fit: cover;
+	object-position: top;
+}
+
+.gg-team .gg-title {
+	margin-top: 18px;
+}
+
+/* Figma sets no tracking on the profile copy (the theme default is 0.1px, headings 1.6px). */
+.gg-team .gg-team__profile :is(.gg-team__role, .gg-team__text, .gg-team__focus-number, .gg-team__focus-title, .gg-team__focus-body) {
+	letter-spacing: 0;
+}
+
+.gg-team .gg-team__role {
+	margin-top: 8px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	color: var(--gg-muted);
+}
+
+.gg-team .gg-team__rule {
+	width: 64px;
+	height: 2px;
+	margin-top: 20px;
+	background: var(--gg-accent);
+}
+
+.gg-team .gg-team__text {
+	font-size: 15px;
+	line-height: 26px;
+	color: var(--gg-muted);
+}
+
+.gg-team .gg-team__rule + .gg-team__text {
+	margin-top: 22px;
+}
+
+.gg-team .gg-team__text + .gg-team__text {
+	margin-top: 26px;
+}
+
+.gg-team .gg-team__focus-list {
+	margin-top: 28px;
+}
+
+.gg-team .gg-team__focus {
+	display: flex;
+	gap: 10px;
+	padding: 18px 0;
+	border-top: 1px solid rgba(39, 124, 224, 0.28);
+}
+
+.gg-team .gg-team__focus-number {
+	flex: 0 0 42px;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 18px;
+	color: var(--gg-accent);
+}
+
+.gg-team .gg-team__focus-text {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.gg-team .gg-team__focus-title {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	color: var(--gg-white);
+}
+
+.gg-team .gg-team__focus-body {
+	margin-top: 8px;
+	font-size: 12px;
+	line-height: 18px;
+	color: var(--gg-muted);
+}
+
+/* ---------------------------------------------------------------------------
  * About — Values (Figma "Outcome Card / Compact").
  * ------------------------------------------------------------------------ */
 
@@ -867,6 +963,17 @@
 		margin-top: 16px;
 	}
 
+	/* Team: photo above the profile, cropped from the top so the face stays in view. */
+	.gg-team .gg-container {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 40px;
+	}
+
+	.gg-team .gg-team__photo img {
+		height: auto;
+		aspect-ratio: 4 / 3;
+	}
+
 	.gg-card--value,
 	.gg-image-card--profile,
 	.gg-image-card--office,
@@ -971,6 +1078,20 @@
 
 	.gg-about-intro .gg-about-intro__image--inset {
 		width: 42%;
+	}
+
+	/* Team: photo above the profile. */
+	.gg-team .gg-container {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 32px;
+	}
+
+	.gg-team .gg-team__photo img {
+		aspect-ratio: 4 / 5;
+	}
+
+	.gg-team .gg-title {
+		margin-top: 12px;
 	}
 
 	.gg-values .gg-heading .gg-accent {
