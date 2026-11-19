@@ -69,11 +69,25 @@
 	align-items: start;
 }
 
+/* Cut-out photo (470 × 605) standing on the bottom edge of a dark bordered 560 × 635 panel. */
+.gg-team .gg-team__photo {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	box-sizing: border-box;
+	height: 635px;
+	overflow: hidden;
+	border: 1px solid rgba(39, 124, 224, 0.28);
+	border-radius: 6px;
+	background: #0c151e;
+}
+
 .gg-team .gg-team__photo img {
 	display: block;
-	width: 100%;
-	height: 635px;
-	border-radius: 6px;
+	width: auto;
+	max-width: 100%;
+	height: calc(100% - 28px);
+	aspect-ratio: 470 / 605;
 	object-fit: cover;
 	object-position: top;
 }
@@ -963,13 +977,13 @@
 		margin-top: 16px;
 	}
 
-	/* Team: photo above the profile, cropped from the top so the face stays in view. */
+	/* Team: photo panel above the profile. */
 	.gg-team .gg-container {
 		grid-template-columns: minmax(0, 1fr);
 		gap: 40px;
 	}
 
-	.gg-team .gg-team__photo img {
+	.gg-team .gg-team__photo {
 		height: auto;
 		aspect-ratio: 4 / 3;
 	}
@@ -1086,7 +1100,7 @@
 		gap: 32px;
 	}
 
-	.gg-team .gg-team__photo img {
+	.gg-team .gg-team__photo {
 		aspect-ratio: 4 / 5;
 	}
 

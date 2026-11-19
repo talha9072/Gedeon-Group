@@ -28,7 +28,7 @@ foreach ($gedeon_group_focus as $gedeon_group_index => [$gedeon_group_title, $ge
     );
 }
 
-$gedeon_group_inner = gedeon_group_block_image('gg-team__photo', get_theme_file_uri('assets/img/team-stein-johnsen.webp'), 'Stein Johnsen, Director of Gedeon Group')
+$gedeon_group_inner = gedeon_group_block_image('gg-team__photo', get_theme_file_uri('assets/img/team-stein-johnsen-cutout.webp'), 'Stein Johnsen, Director of Gedeon Group')
     . gedeon_group_block_group(
         'gg-team__profile',
         gedeon_group_block_p('gg-eyebrow', 'The Team Behind Gedeon Group')
